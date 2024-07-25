@@ -43,21 +43,21 @@ tol = 1e-6
 max_iter = 100
 
 # Conjunto de condiciones iniciales
-initial_conditions = [
+Valores_iniciales = [
     (1.5, 1.0, 1.5),  # Caso 1: Aproximaciones alrededor de la raíz
     (0.5, 0.0, 0.5),  # Caso 2: Aproximaciones más alejadas
     (2.0, 1.5, 2.0)   # Caso 3: Aproximaciones al otro lado de la raíz
 ]
 
 # Ejecución de pruebas para diferentes condiciones iniciales
-for x0_newton, x0_secant, x1_secant in initial_conditions:
+for x0_newton, x0_sec, x1_sec in Valores_iniciales:
     print(f"Probando con condiciones iniciales:")
     print(f"Newton-Raphson x0 = {x0_newton}")
-    print(f"Secante x0 = {x0_secant}, x1 = {x1_secant}")
+    print(f"Secante x0 = {x0_sec}, x1 = {x1_sec}")
     
-    root_newton, iter_newton = newton_raphson(x0_newton, tol, max_iter)
-    root_secant, iter_secant = secant(x0_secant, x1_secant, tol, max_iter)
+    newton, iter_newton = newton_raphson(x0_newton, tol, max_iter)
+    m_secant, iter_secant = secant(x0_sec, x1_sec, tol, max_iter)
     
-    print(f"Método de Newton-Raphson: raíz = {root_newton}, iteraciones = {iter_newton}")
-    print(f"Método de la secante: raíz = {root_secant}, iteraciones = {iter_secant}")
+    print(f"Método de Newton-Raphson: raíz = {newton}, iteraciones = {iter_newton}")
+    print(f"Método de la secante: raíz = {m_secant}, iteraciones = {iter_secant}")
     print("-" * 50)
